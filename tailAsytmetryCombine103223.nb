@@ -1,0 +1,361 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13876,        353]
+NotebookOptionsPosition[     12007,        318]
+NotebookOutlinePosition[     12412,        334]
+CellTagsIndexPosition[     12369,        331]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"controltaildata", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\taoji\\\\OneDrive - UCSF\\\\Desktop\\\\New \
+folder\\\\moviesearch\\\\controlXYnew0926.csv\>\"", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.9074263631109715`*^9, 3.9074263646497736`*^9}, {
+   3.9074272433588877`*^9, 3.9074272434219923`*^9}, {3.9074281680671377`*^9, 
+   3.90742817823632*^9}, 3.9077794593556476`*^9},
+ CellLabel->
+  "In[506]:=",ExpressionUUID->"b44e4480-ff2c-4bbc-87ba-cae2e02373e8"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"tsataildata", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\taoji\\\\OneDrive - UCSF\\\\Desktop\\\\New \
+folder\\\\moviesearch\\\\TSAXYnew0926.csv\>\"", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.9048329862765083`*^9, 3.9048330101902857`*^9}, 
+   3.904841836897853*^9, {3.907428184069889*^9, 3.907428185672226*^9}},
+ CellLabel->
+  "In[507]:=",ExpressionUUID->"d2fc01c4-b2df-4758-8526-d343f934ece2"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.907777671305492*^9, 
+  3.9077794542837343`*^9},ExpressionUUID->"968785fa-18a5-41ad-a720-\
+01d0ee3a19af"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DirectoryName", "[", 
+  RowBox[{"DirectoryName", "[", 
+   RowBox[{"DirectoryName", "[", 
+    RowBox[{"DirectoryName", "[", 
+     RowBox[{
+     "AbsoluteFileName", "[", 
+      "\"\<D:\\\\combine0802\\\\control\\\\d1c1control0707 \
+done\\\\ch1\\\\15.-28\\\\Path from Track_15 to \
+Track_15.tifcroppedimages\\\\(+-1)\\\\newXYnew\\\\DateObject[{2023, 9, 8}, \
+Day]0908resultXYnew\\\\newMethod\\\\15.-28_(+-1)_NewResult_0908XYnew.csv\>\"",
+       "]"}], "]"}], "]"}], "]"}], "]"}]], "Input",
+ CellLabel->
+  "In[574]:=",ExpressionUUID->"3fe1d47c-44c3-4fbf-9597-d8abda8ee83e"],
+
+Cell[BoxData["\<\"D:\\\\combine0802\\\\control\\\\d1c1control0707 done\\\\ch1\
+\\\\15.-28\\\\Path from Track_15 to \
+Track_15.tifcroppedimages\\\\(+-1)\\\\\"\>"], "Output",
+ CellChangeTimes->{3.9077778368852935`*^9},
+ CellLabel->
+  "Out[574]=",ExpressionUUID->"27f7e943-3fb7-4efe-b0f3-fbe7fccc779a"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"dataselectch1", "[", 
+    RowBox[{"sheet_", ",", "i_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Select", "[", 
+       RowBox[{
+        RowBox[{"Import", "[", 
+         RowBox[{
+          RowBox[{"FileNames", "[", 
+           RowBox[{"\"\<*\>\"", ",", 
+            RowBox[{
+             RowBox[{"FileNames", "[", 
+              RowBox[{"\"\<*\>\"", ",", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"names", "=", 
+                    RowBox[{"FileNames", "[", 
+                    RowBox[{"\"\<*result\>\"", ",", 
+                    RowBox[{"DirectoryName", "[", 
+                    RowBox[{"DirectoryName", "[", 
+                    RowBox[{"DirectoryName", "[", 
+                    RowBox[{"DirectoryName", "[", 
+                    RowBox[{"AbsoluteFileName", "[", 
+                    RowBox[{
+                    RowBox[{"sheet", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], "[", 
+                    RowBox[{"[", "20", "]"}], "]"}], "]"}], "]"}], "]"}], 
+                    "]"}], "]"}]}], "]"}]}], ")"}], "[", 
+                  RowBox[{"[", 
+                   RowBox[{"Ordering", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"FileDate", "[", 
+                    RowBox[{"#", ",", "\"\<Modification\>\""}], "]"}], "&"}], 
+                    "/@", "names"}], "]"}], "]"}], "]"}], ")"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"-", "1"}], "]"}], "]"}]}], "]"}], "[", 
+             RowBox[{"[", 
+              RowBox[{"-", "1"}], "]"}], "]"}]}], "]"}], "[", 
+          RowBox[{"[", 
+           RowBox[{"-", "1"}], "]"}], "]"}], "]"}], ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"#", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "==", 
+          RowBox[{
+           RowBox[{"sheet", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "[", 
+           RowBox[{"[", "8", "]"}], "]"}]}], "&"}]}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "[", 
+     RowBox[{"[", 
+      RowBox[{"{", "16", "}"}], "]"}], "]"}], "/", "0.046"}]}], 
+  "\n"}]], "Input",
+ CellChangeTimes->{{3.9077789125506086`*^9, 3.907778951349548*^9}, {
+  3.9077791091610703`*^9, 3.907779109650999*^9}, {3.907779324372574*^9, 
+  3.907779337318693*^9}, {3.9077793827106686`*^9, 3.907779406689332*^9}, {
+  3.907779437024225*^9, 3.9077794388806763`*^9}, {3.907779501790722*^9, 
+  3.9077795072258825`*^9}, {3.9077796156001663`*^9, 3.9077796184367847`*^9}, {
+  3.907781156856085*^9, 3.907781163442498*^9}, {3.9077826197165728`*^9, 
+  3.9077826293616185`*^9}},
+ CellLabel->
+  "In[669]:=",ExpressionUUID->"f2463ff1-b5d3-4b7a-8ad7-c99678e19ebd"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"dataselectch2", "[", 
+   RowBox[{"sheet_", ",", "i_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"Import", "[", 
+        RowBox[{
+         RowBox[{"FileNames", "[", 
+          RowBox[{"\"\<*\>\"", ",", 
+           RowBox[{
+            RowBox[{"FileNames", "[", 
+             RowBox[{"\"\<*\>\"", ",", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"names", "=", 
+                   RowBox[{"FileNames", "[", 
+                    RowBox[{"\"\<*result\>\"", ",", 
+                    RowBox[{"DirectoryName", "[", 
+                    RowBox[{"DirectoryName", "[", 
+                    RowBox[{"DirectoryName", "[", 
+                    RowBox[{"DirectoryName", "[", 
+                    RowBox[{"AbsoluteFileName", "[", 
+                    RowBox[{
+                    RowBox[{"sheet", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], "[", 
+                    RowBox[{"[", "41", "]"}], "]"}], "]"}], "]"}], "]"}], 
+                    "]"}], "]"}]}], "]"}]}], ")"}], "[", 
+                 RowBox[{"[", 
+                  RowBox[{"Ordering", "[", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"FileDate", "[", 
+                    RowBox[{"#", ",", "\"\<Modification\>\""}], "]"}], "&"}], 
+                    "/@", "names"}], "]"}], "]"}], "]"}], ")"}], "[", 
+               RowBox[{"[", 
+                RowBox[{"-", "1"}], "]"}], "]"}]}], "]"}], "[", 
+            RowBox[{"[", 
+             RowBox[{"-", "1"}], "]"}], "]"}]}], "]"}], "[", 
+         RowBox[{"[", 
+          RowBox[{"-", "1"}], "]"}], "]"}], "]"}], ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "==", 
+         RowBox[{
+          RowBox[{"sheet", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "[", 
+          RowBox[{"[", "8", "]"}], "]"}]}], "&"}]}], "]"}], "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "[", 
+    RowBox[{"[", 
+     RowBox[{"{", "16", "}"}], "]"}], "]"}], "/", "0.046"}]}]], "Input",
+ CellChangeTimes->{{3.907782625145623*^9, 3.9077826329629154`*^9}},
+ CellLabel->
+  "In[670]:=",ExpressionUUID->"abc1d257-a07d-4000-8288-65adccba122d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"controlcombine", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Join", "[", 
+      RowBox[{
+       RowBox[{"controltaildata", "[", 
+        RowBox[{"[", "i", "]"}], "]"}], ",", 
+       RowBox[{"{", "\"\<//\>\"", "}"}], ",", 
+       RowBox[{"dataselectch1", "[", 
+        RowBox[{"controltaildata", ",", "i"}], "]"}], ",", 
+       RowBox[{"dataselectch2", "[", 
+        RowBox[{"controltaildata", ",", "i"}], "]"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "2", ",", 
+       RowBox[{"Length", "[", "controltaildata", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.9077776765659633`*^9, 3.9077777345853367`*^9}, {
+   3.907779351695397*^9, 3.90777935949594*^9}, {3.90777942024102*^9, 
+   3.90777943052859*^9}, {3.9077796312216234`*^9, 3.9077796527131796`*^9}, {
+   3.9077797037101107`*^9, 3.9077797070870075`*^9}, 3.9077797409041457`*^9, 
+   3.907779867431778*^9, {3.907782642924985*^9, 3.907782652165281*^9}},
+ CellLabel->
+  "In[671]:=",ExpressionUUID->"783db07f-bd61-467e-b0c6-93c83972b740"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"tsacombine", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Join", "[", 
+      RowBox[{
+       RowBox[{"tsataildata", "[", 
+        RowBox[{"[", "i", "]"}], "]"}], ",", 
+       RowBox[{"{", "\"\<//\>\"", "}"}], ",", 
+       RowBox[{"dataselectch1", "[", 
+        RowBox[{"tsataildata", ",", "i"}], "]"}], ",", 
+       RowBox[{"dataselectch2", "[", 
+        RowBox[{"tsataildata", ",", "i"}], "]"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "2", ",", 
+       RowBox[{"Length", "[", "tsataildata", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.9077776765659633`*^9, 3.9077777345853367`*^9}, {
+   3.907779351695397*^9, 3.90777935949594*^9}, {3.90777942024102*^9, 
+   3.90777943052859*^9}, {3.9077796312216234`*^9, 3.9077796527131796`*^9}, {
+   3.9077797037101107`*^9, 3.9077797070870075`*^9}, 3.9077797409041457`*^9, 
+   3.907779867431778*^9, {3.907781561069677*^9, 3.907781581074214*^9}, {
+   3.907782655871867*^9, 3.907782664714609*^9}},
+ CellLabel->
+  "In[672]:=",ExpressionUUID->"cc536db5-1d66-423d-98cc-e2f5f1637172"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<controlcombine.csv\>\"", ",", "controlcombine"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.907779743071424*^9, 3.9077797691332197`*^9}, 
+   3.9077826867795076`*^9},
+ CellLabel->
+  "In[675]:=",ExpressionUUID->"c53a5fb6-fd10-48da-b697-1cf2c8791673"],
+
+Cell[BoxData["\<\"controlcombine.csv\"\>"], "Output",
+ CellChangeTimes->{{3.9077828554084806`*^9, 3.907782856692024*^9}},
+ CellLabel->
+  "Out[675]=",ExpressionUUID->"607e75ab-b6dd-406b-91bd-4bcdb0d578ec"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"SystemOpen", "[", "\"\<controlcombine.csv\>\"", "]"}]], "Input",
+ NumberMarks->False,
+ CellLabel->
+  "In[677]:=",ExpressionUUID->"465cbfd2-b4fc-4f96-971e-a53eb8f5d2bd"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<tsacombine.csv\>\"", ",", "tsacombine"}], "]"}]], "Input",
+ CellChangeTimes->{{3.907779743071424*^9, 3.9077797691332197`*^9}, {
+   3.907781596966565*^9, 3.9077816020526047`*^9}, 3.907782689983286*^9},
+ CellLabel->
+  "In[676]:=",ExpressionUUID->"64e4479f-f93d-49cc-a2d7-0cdc3026a42c"],
+
+Cell[BoxData["\<\"tsacombine.csv\"\>"], "Output",
+ CellChangeTimes->{{3.90778285609997*^9, 3.907782857398382*^9}},
+ CellLabel->
+  "Out[676]=",ExpressionUUID->"e16dea07-1f23-458e-83ec-e43e3787a926"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"SystemOpen", "[", "\"\<tsacombine.csv\>\"", "]"}]], "Input",
+ NumberMarks->False,
+ CellLabel->
+  "In[678]:=",ExpressionUUID->"72af78d9-4daa-40bd-be7c-f32e077b6f4b"],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"SystemOpen", "[", 
+   RowBox[{"DirectoryName", "[", 
+    RowBox[{
+    "AbsoluteFileName", "[", 
+     "\"\<D:\\\\combine0802\\\\control\\\\d1c1control0707 \
+done\\\\ch1\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newXYnew\\\\DateObject[{2023, 9, 8}, \
+Day]0908resultXYnew\\\\newMethod\\\\16.-13_(+-1)_NewResult_0908XYnew.csv\>\"",
+      "]"}], "]"}], "]"}], "*)"}]], "Input",
+ NumberMarks->False,
+ CellLabel->
+  "In[628]:=",ExpressionUUID->"49d365f9-9401-42b7-ab7a-85d38a572479"]
+},
+WindowSize->{960, 472},
+WindowMargins->{{-5.5, Automatic}, {Automatic, -5.5}},
+FrontEndVersion->"13.0 for Microsoft Windows (64-bit) (December 2, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"7863f299-026a-40fb-957b-cd8e17b0161a"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 518, 11, 28, "Input",ExpressionUUID->"b44e4480-ff2c-4bbc-87ba-cae2e02373e8"],
+Cell[1079, 33, 453, 10, 28, "Input",ExpressionUUID->"d2fc01c4-b2df-4758-8526-d343f934ece2"],
+Cell[1535, 45, 171, 3, 48, "Input",ExpressionUUID->"968785fa-18a5-41ad-a720-01d0ee3a19af"],
+Cell[CellGroupData[{
+Cell[1731, 52, 593, 13, 162, "Input",ExpressionUUID->"3fe1d47c-44c3-4fbf-9597-d8abda8ee83e"],
+Cell[2327, 67, 299, 5, 32, "Output",ExpressionUUID->"27f7e943-3fb7-4efe-b0f3-fbe7fccc779a"]
+}, Open  ]],
+Cell[2641, 75, 2788, 67, 181, "Input",ExpressionUUID->"f2463ff1-b5d3-4b7a-8ad7-c99678e19ebd"],
+Cell[5432, 144, 2324, 59, 162, "Input",ExpressionUUID->"abc1d257-a07d-4000-8288-65adccba122d"],
+Cell[7759, 205, 1076, 24, 67, "Input",ExpressionUUID->"783db07f-bd61-467e-b0c6-93c83972b740"],
+Cell[8838, 231, 1106, 25, 48, "Input",ExpressionUUID->"cc536db5-1d66-423d-98cc-e2f5f1637172"],
+Cell[CellGroupData[{
+Cell[9969, 260, 302, 7, 28, "Input",ExpressionUUID->"c53a5fb6-fd10-48da-b697-1cf2c8791673"],
+Cell[10274, 269, 204, 3, 32, "Output",ExpressionUUID->"607e75ab-b6dd-406b-91bd-4bcdb0d578ec"]
+}, Open  ]],
+Cell[10493, 275, 192, 4, 28, "Input",ExpressionUUID->"465cbfd2-b4fc-4f96-971e-a53eb8f5d2bd"],
+Cell[CellGroupData[{
+Cell[10710, 283, 337, 6, 28, "Input",ExpressionUUID->"64e4479f-f93d-49cc-a2d7-0cdc3026a42c"],
+Cell[11050, 291, 197, 3, 32, "Output",ExpressionUUID->"e16dea07-1f23-458e-83ec-e43e3787a926"]
+}, Open  ]],
+Cell[11262, 297, 188, 4, 28, "Input",ExpressionUUID->"72af78d9-4daa-40bd-be7c-f32e077b6f4b"],
+Cell[11453, 303, 550, 13, 124, "Input",ExpressionUUID->"49d365f9-9401-42b7-ab7a-85d38a572479"]
+}
+]
+*)
+
