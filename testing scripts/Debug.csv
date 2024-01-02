@@ -1,0 +1,36 @@
+Name,*,Value
+Memory,*,51MB of 9999MB (<1%)
+nImages(),,3
+getTitle(),,"SUM_Path from Track_11 to Track_11-1.tif"
+dir1_inputtwochannel,,"C:\Users\taoji\OneDrive - UCSF\Desktop\movietest110123\new TSA data 111023\10uMT..."
+folderslisttwochannel,,array[11]
+nn,,5
+dir1_inputallalot,,"C:\Users\taoji\OneDrive - UCSF\Desktop\movietest110123\new TSA data 111023\10uMT..."
+folderslistalot,,array[29]
+m,,0
+dir1_inputallx2,,"C:\Users\taoji\OneDrive - UCSF\Desktop\movietest110123\new TSA data 111023\10uMT..."
+folderslistx2,,array[13]
+movieslist,,array[29]
+ii,,3
+folderktname,,"11/"
+ktindex,,"11"
+jj,,10
+inputdir,,"C:\Users\taoji\OneDrive - UCSF\Desktop\movietest110123\new TSA data 111023\10uMT..."
+outputdir,,"C:\Users\taoji\OneDrive - UCSF\Desktop\movietest110123\new TSA data 111023\10uMT..."
+moviepath,,"C:\Users\taoji\OneDrive - UCSF\Desktop\movietest110123\new TSA data 111023\10uMT..."
+originalimagename,,"Path from Track_11 to Track_11.tif"
+width,,21
+height,,21
+channels,,1
+slices,,8
+frames,,61
+fl,,4
+ce,,5
+imagename1,,"Path from Track_11 to Track_11-1.tif"
+interimString,,"20.-12/"
+outputArray,,array[2]
+
+---,,---
+Error:,,Index (2) out of 0-1 range in line 117:
+,
+,,angleindex = outputArray [ 2 <]> ; 

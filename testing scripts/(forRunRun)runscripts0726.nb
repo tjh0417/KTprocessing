@@ -1,0 +1,672 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     34323,        664]
+NotebookOptionsPosition[     32631,        631]
+NotebookOutlinePosition[     33038,        647]
+CellTagsIndexPosition[     32995,        644]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"masterDir", "=", 
+     RowBox[{"SystemDialogInput", "[", "\"\<Directory\>\"", "]"}]}], ";"}], 
+   "*)"}], "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.898699491991888*^9, 3.8986995009062405`*^9}, {
+   3.8986999691570735`*^9, 3.8986999880097528`*^9}, 3.898700152464168*^9, 
+   3.899411584788183*^9},
+ CellLabel->"In[1]:=",ExpressionUUID->"69013668-31fd-4491-866a-ca5d80e375c6"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"channels", "=", 
+  RowBox[{"Select", "[", 
+   RowBox[{
+    RowBox[{"FileNames", "[", 
+     RowBox[{"\"\<*\>\"", ",", "masterDir"}], "]"}], ",", "DirectoryQ"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.8987000500277414`*^9, 3.89870005739049*^9}, {
+  3.898700161552127*^9, 3.898700167135064*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"25fb6a55-7c78-4081-ab70-35a63c1b4c19"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch1\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{3.898956028601625*^9, 3.8989851440017633`*^9, 
+  3.899305760072124*^9, 3.899305807588936*^9, 3.899306091621225*^9, 
+  3.8993062633553123`*^9, 3.899333048022334*^9, 3.8993884689081383`*^9, 
+  3.899388570563778*^9, 3.8993888572228036`*^9, 3.899389005356888*^9, 
+  3.89938945574358*^9, 3.899389666757913*^9, 3.89938993821673*^9, 
+  3.899390244568308*^9, 3.899390583339285*^9, 3.899396774256652*^9},
+ CellLabel->
+  "Out[2071]=",ExpressionUUID->"cd7a4c5b-bf35-4687-a741-7031d2c44bdd"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ktspairs", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Select", "[", 
+       RowBox[{
+        RowBox[{"FileNames", "[", 
+         RowBox[{"\"\<*\>\"", ",", 
+          RowBox[{"channels", "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ",", "DirectoryQ"}], 
+       "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", 
+        RowBox[{"Length", "[", "channels", "]"}]}], "}"}]}], "]"}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.898700234262249*^9, 3.8987003119522443`*^9}, {
+   3.8987004126602974`*^9, 3.8987004238942194`*^9}, 3.898700800964671*^9},
+ CellLabel->"In[3]:=",ExpressionUUID->"0bd3039e-cc52-4ddf-ab69-623c2853953b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ktdirs", "=", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Select", "[", 
+        RowBox[{
+         RowBox[{"FileNames", "[", 
+          RowBox[{"\"\<*\>\"", ",", 
+           RowBox[{"ktspairs", "[", 
+            RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ",", "DirectoryQ"}], 
+        "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", 
+         RowBox[{"Length", "[", "ktspairs", "]"}]}], "}"}]}], "]"}], "]"}]}], 
+   ";"}], "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{
+  3.898699512110915*^9, {3.898700371076975*^9, 3.898700394123664*^9}, {
+   3.8987004279432344`*^9, 3.898700430687885*^9}, {3.8987004709944434`*^9, 
+   3.898700471332302*^9}, {3.898700796804551*^9, 3.8987007985835686`*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"bdf15ad8-00c9-4529-a0d4-6df33cca651f"],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{"ktimgdirstable", "=", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Select", "[", 
+        RowBox[{
+         RowBox[{"FileNames", "[", 
+          RowBox[{"\"\<*\>\"", ",", 
+           RowBox[{"ktdirs", "[", 
+            RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ",", "DirectoryQ"}], 
+        "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", 
+         RowBox[{"Length", "[", "ktdirs", "]"}]}], "}"}]}], "]"}], "]"}]}], 
+   ";"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.8987004771898746`*^9, 3.898700504677173*^9}, {
+   3.8987006710315137`*^9, 3.8987006758339415`*^9}, {3.8987007875171156`*^9, 
+   3.8987007947958455`*^9}, {3.898955715121197*^9, 3.8989557262595077`*^9}, 
+   3.8989557691675496`*^9},
+ CellLabel->"In[5]:=",ExpressionUUID->"1151d31b-ec53-42c7-a17e-d2b31a84c6b1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"ktimgdirstable", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"ktdirs", "[", 
+       RowBox[{"[", "i", "]"}], "]"}], "<>", "\"\<\\\\(+-1)\\\\\>\""}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"Length", "[", "ktdirs", "]"}]}], "}"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.8989557716413755`*^9, 3.898955940259018*^9}, {
+  3.898955978070511*^9, 3.8989559911546946`*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"da951d0d-2085-4459-a287-ecf13d7733ce"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch1\\\\15.-28\\\\Path from Track_15 to \
+Track_15.tifcroppedimages\\\\(+-1)\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch1\\\\15.-28\\\\Path from Track_28 to \
+Track_28.tifcroppedimages\\\\(+-1)\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch1\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch1\\\\16.-13\\\\Path from Track_16 to \
+Track_16.tifcroppedimages\\\\(+-1)\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch1\\\\18.-10\\\\Path from Track_10 to \
+Track_10.tifcroppedimages\\\\(+-1)\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch1\\\\18.-10\\\\Path from Track_18 to \
+Track_18.tifcroppedimages\\\\(+-1)\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch1\\\\3.-1\\\\Path from Track_1 to Track_1.tifcroppedimages\\\\(+-1)\
+\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch1\\\\3.-1\\\\Path from Track_3 to Track_3.tifcroppedimages\\\\(+-1)\
+\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch1\\\\5.-7\\\\Path from Track_5 to Track_5.tifcroppedimages\\\\(+-1)\
+\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch1\\\\5.-7\\\\Path from Track_7 to Track_7.tifcroppedimages\\\\(+-1)\
+\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch1\\\\special-20\\\\Path from Track_20 to \
+Track_20.tifcroppedimages\\\\(+-1)\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\15.-28\\\\Path from Track_15 to \
+Track_15.tifcroppedimages\\\\(+-1)\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\15.-28\\\\Path from Track_28 to \
+Track_28.tifcroppedimages\\\\(+-1)\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_16 to \
+Track_16.tifcroppedimages\\\\(+-1)\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\18.-10\\\\Path from Track_10 to \
+Track_10.tifcroppedimages\\\\(+-1)\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\18.-10\\\\Path from Track_18 to \
+Track_18.tifcroppedimages\\\\(+-1)\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\3.-1\\\\Path from Track_1 to Track_1.tifcroppedimages\\\\(+-1)\
+\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\3.-1\\\\Path from Track_3 to Track_3.tifcroppedimages\\\\(+-1)\
+\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\5.-7\\\\Path from Track_5 to Track_5.tifcroppedimages\\\\(+-1)\
+\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\5.-7\\\\Path from Track_7 to Track_7.tifcroppedimages\\\\(+-1)\
+\\\\\"\>", 
+   ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\special-20\\\\Path from Track_20 to \
+Track_20.tifcroppedimages\\\\(+-1)\\\\\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{3.8989559254350224`*^9, 3.8989559914394484`*^9, 
+  3.898956028642728*^9, 3.8989851441184096`*^9, 3.899305760155289*^9, 
+  3.89930580766658*^9, 3.8993060916888924`*^9, 3.899306263449625*^9, 
+  3.8993330481386185`*^9, 3.899388469074854*^9, 3.8993885706834555`*^9, 
+  3.899388857339926*^9, 3.899389005474962*^9, 3.8993894558735003`*^9, 
+  3.8993896670799713`*^9, 3.8993899383390064`*^9, 3.899390244696035*^9, 
+  3.899390583446624*^9, 3.899396774388592*^9},
+ CellLabel->
+  "Out[2075]=",ExpressionUUID->"b27a5920-952a-48c8-b65f-6a01f28bd937"]
+}, Closed]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"scriptdir", "=", 
+   RowBox[{"NotebookDirectory", "[", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.8986996545626707`*^9, 3.898699654563671*^9}, {
+  3.898699696963689*^9, 3.898699721961956*^9}, {3.898699776769574*^9, 
+  3.8986997798017516`*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"28b56b68-ec80-43e8-b15d-270afec1676f"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"NotebookEvaluate", "[", 
+    RowBox[{"scriptdir", "<>", "\"\<(betatest)(0731)functionsOnly.nb\>\""}], 
+    "]"}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.8987799309311385`*^9, 3.8987799929175987`*^9}, {
+   3.8989850699472704`*^9, 3.8989850703119287`*^9}, {3.899247991440987*^9, 
+   3.8992480016956654`*^9}, {3.8993279667381024`*^9, 3.8993279668336306`*^9}, 
+   3.8993326970419145`*^9, {3.899857704725691*^9, 3.899857725495681*^9}},
+ CellLabel->"In[8]:=",ExpressionUUID->"d9edb7f5-96d7-4249-88a0-3f0652c623be"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"imageDir", "=", 
+      RowBox[{"ktimgdirstable", "[", 
+       RowBox[{"[", "i", "]"}], "]"}]}], ";", 
+     RowBox[{"NotebookEvaluate", "[", 
+      RowBox[{
+      "scriptdir", "<>", "\"\<0725AcellNoD1ButAreaRatioMainprogram.nb\>\""}], 
+      "]"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", 
+      RowBox[{"Length", "[", "ktimgdirstable", "]"}]}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.8987007575121007`*^9, 3.8987007645560102`*^9}, {
+   3.898700815708503*^9, 3.8987008855250945`*^9}, 3.898701145249118*^9, {
+   3.8987019540077705`*^9, 3.8987019581927886`*^9}, {3.89930567368099*^9, 
+   3.899305696058778*^9}, {3.8993057767798457`*^9, 3.8993057856648955`*^9}, {
+   3.8993058577866755`*^9, 3.8993058729771338`*^9}, {3.899305907147225*^9, 
+   3.8993059123108444`*^9}, 3.8993060721763377`*^9, {3.8993061067438188`*^9, 
+   3.8993061169966526`*^9}, {3.8993062304494305`*^9, 3.8993062448906636`*^9}, 
+   3.8993327098204165`*^9, {3.89939056337635*^9, 3.8993905715456295`*^9}},
+ CellLabel->"In[9]:=",ExpressionUUID->"d1e3baca-6ac9-4cf5-9e78-ae1b9e669673"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "Null", ",", "Null", ",", "Null", ",", "Null", ",", "Null", ",", "Null", 
+   ",", "Null", ",", "Null", ",", "Null", ",", "Null", ",", "Null", ",", 
+   "Null", ",", "Null", ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\1_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\2_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\3_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\4_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\5_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\6_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\7_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\8_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\9_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\10_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\11_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\12_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\13_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\14_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\15_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\16_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\17_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\18_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\19_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\20_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\21_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\22_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\23_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\24_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\25_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\26_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\27_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\28_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\29_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\30_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\31_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\32_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\33_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\34_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\35_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\36_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\37_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\38_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\39_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\40_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\41_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\42_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\43_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\44_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\45_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\46_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\47_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\48_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\49_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\50_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\51_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\52_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\53_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\54_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\55_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\56_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\57_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\58_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\59_imagecollage.png\"\>", 
+     ",", "\<\"C:\\\\Users\\\\taoji\\\\OneDrive - \
+UCSF\\\\Desktop\\\\0717TSA&control\\\\decon\\\\control\\\\d1c1control0707 \
+done\\\\ch2\\\\16.-13\\\\Path from Track_13 to \
+Track_13.tifcroppedimages\\\\(+-1)\\\\newplots\\\\imagecollageDateObject[{\
+2023, 7, 26}, Day]\\\\60_imagecollage.png\"\>"}], "}"}], ",", "Null", ",", 
+   "Null", ",", "Null", ",", "Null", ",", "Null", ",", "Null", ",", "Null", 
+   ",", "Null"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.8993058086910534`*^9, 3.8993058768222103`*^9, 3.8993059221722794`*^9, 
+   3.8993060186441727`*^9, {3.8993060927090635`*^9, 3.8993061205977397`*^9}, 
+   3.8993141935539403`*^9, 3.89933660559128*^9, 3.8993884703349924`*^9, 
+   3.8993886624691706`*^9, 3.8993889484596395`*^9, 3.8993890065507736`*^9, 
+   3.8993894570370007`*^9, 3.8993896684956675`*^9, 3.8993899395068283`*^9, 
+   3.8993904410080934`*^9, 3.8993907739212866`*^9, 3.8993994698860345`*^9},
+ CellLabel->
+  "Out[2078]=",ExpressionUUID->"d0217dab-c9ff-4abb-89f5-18f566b64097"]
+}, Closed]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.8986995333672247`*^9, 3.898699535376923*^9}, {
+   3.898699726664631*^9, 3.898699737214954*^9}, {3.898699784458195*^9, 
+   3.8986998122239695`*^9}, 3.89869991638616*^9, {3.8987008694651146`*^9, 
+   3.898700869481986*^9}},
+ CellLabel->"In[10]:=",ExpressionUUID->"31cd53f4-74d9-405c-be6f-b56d1561fd3b"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.898700906820318*^9, 3.8987009070320454`*^9}, {
+  3.898701098534334*^9, 3.898701148232362*^9}},
+ CellLabel->"In[11]:=",ExpressionUUID->"20ed1a0b-b474-4ce9-8597-294341a466ce"]
+},
+WindowSize->{529.5, 423.75},
+WindowMargins->{{Automatic, 4.5}, {Automatic, 54}},
+FrontEndVersion->"13.2 for Microsoft Windows (64-bit) (January 30, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"1c660290-f4fb-442e-aefb-b44a79955ec3"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 454, 10, 48, "Input",ExpressionUUID->"69013668-31fd-4491-866a-ca5d80e375c6"],
+Cell[CellGroupData[{
+Cell[1037, 34, 400, 9, 28, "Input",ExpressionUUID->"25fb6a55-7c78-4081-ab70-35a63c1b4c19"],
+Cell[1440, 45, 838, 15, 128, "Output",ExpressionUUID->"cd7a4c5b-bf35-4687-a741-7031d2c44bdd"]
+}, Open  ]],
+Cell[2293, 63, 732, 19, 86, "Input",ExpressionUUID->"0bd3039e-cc52-4ddf-ab69-623c2853953b"],
+Cell[3028, 84, 880, 22, 105, "Input",ExpressionUUID->"bdf15ad8-00c9-4529-a0d4-6df33cca651f"],
+Cell[3911, 108, 882, 22, 86, "Input",ExpressionUUID->"1151d31b-ec53-42c7-a17e-d2b31a84c6b1"],
+Cell[CellGroupData[{
+Cell[4818, 134, 561, 13, 67, "Input",ExpressionUUID->"da951d0d-2085-4459-a287-ecf13d7733ce"],
+Cell[5382, 149, 5444, 98, 1688, "Output",ExpressionUUID->"b27a5920-952a-48c8-b65f-6a01f28bd937"]
+}, Closed]],
+Cell[10841, 250, 361, 7, 24, "Input",ExpressionUUID->"28b56b68-ec80-43e8-b15d-270afec1676f"],
+Cell[11205, 259, 580, 10, 67, "Input",ExpressionUUID->"d9edb7f5-96d7-4249-88a0-3f0652c623be"],
+Cell[CellGroupData[{
+Cell[11810, 273, 1179, 24, 105, "Input",ExpressionUUID->"d1e3baca-6ac9-4cf5-9e78-ae1b9e669673"],
+Cell[12992, 299, 19047, 317, 6921, "Output",ExpressionUUID->"d0217dab-c9ff-4abb-89f5-18f566b64097"]
+}, Closed]],
+Cell[32054, 619, 348, 5, 24, "Input",ExpressionUUID->"31cd53f4-74d9-405c-be6f-b56d1561fd3b"],
+Cell[32405, 626, 222, 3, 28, "Input",ExpressionUUID->"20ed1a0b-b474-4ce9-8597-294341a466ce"]
+}
+]
+*)
+

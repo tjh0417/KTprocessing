@@ -1,0 +1,14 @@
+print(dir1_inputallalot);
+C:\Users\taoji\OneDrive - UCSF\Desktop\movietest110123\control_dish1_cell1_1\ch1/
+
+print(folderslistalot[1]);
+15.-4/
+
+print(dir1_inputallx2);
+C:\Users\taoji\OneDrive - UCSF\Desktop\movietest110123\control_dish1_cell1_1\ch1/0.-29/
+
+
+
+
+
+
